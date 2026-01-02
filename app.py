@@ -13,7 +13,7 @@ libro1_nombre = "Los Hermanos Karamazov"
 libro1_total = 876
 
 libro2_nombre = "Roma Soy Yo"
-libro2_total = 746
+libro2_total = 692
 
 # --- 3. ENTRADA DE DATOS ---
 col1, col2 = st.columns(2)
