@@ -4,16 +4,16 @@ import matplotlib.pyplot as plt
 # --- 1. CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Tracker de Lectura", page_icon="📚")
 
-st.title("📚 Tracker: Karamazov vs Roma")
+st.title("📚 Tracker: Undefined vs Roma")
 st.write("Control de avance y nivelación de lectura.")
 
 # --- 2. DATOS FIJOS DE LOS LIBROS ---
-# Aquí están las páginas fijas que me diste
-libro1_nombre = "Los Hermanos Karamazov"
-libro1_total = 876
 
-libro2_nombre = "Roma Soy Yo"
-libro2_total = 692
+libro1_nombre = "aun no lo decido"
+libro1_total = 1000
+
+libro2_nombre = "Maldita Roma"
+libro2_total = 841
 
 # --- 3. ENTRADA DE DATOS ---
 col1, col2 = st.columns(2)
@@ -23,7 +23,7 @@ with col1:
     st.caption(f"Total: {libro1_total} páginas")
     # max_value impide que pongas un número mayor al total del libro
     libro1_actual = st.number_input(
-        "Pág. Actual (Karamazov)", 
+        "Pág. Actual (Undefined)", 
         min_value=0, 
         max_value=libro1_total, 
         value=0,
@@ -35,7 +35,7 @@ with col2:
     st.caption(f"Total: {libro2_total} páginas")
     # max_value impide que pongas un número mayor al total del libro
     libro2_actual = st.number_input(
-        "Pág. Actual (Roma)", 
+        "Pág. Actual (Maldita Roma)", 
         min_value=0, 
         max_value=libro2_total, 
         value=0,
@@ -53,8 +53,8 @@ if st.button("Calcular Progreso 🚀", type="primary"):
     
     # Mostrar porcentajes grandes
     m1, m2 = st.columns(2)
-    m1.metric(label="Avance Karamazov", value=f"{porcentaje1:.2f}%")
-    m2.metric(label="Avance Roma", value=f"{porcentaje2:.2f}%")
+    m1.metric(label="Avance Undefined", value=f"{porcentaje1:.2f}%")
+    m2.metric(label="Avance Maldita Roma", value=f"{porcentaje2:.2f}%")
 
     # --- 5. LÓGICA DE NIVELACIÓN (REGLA DE 3) ---
     st.subheader("⚖️ Veredicto")
@@ -89,23 +89,23 @@ if st.button("Calcular Progreso 🚀", type="primary"):
     # Colores: Verde para leído, Gris claro para lo que falta
     colors = ['#4CAF50', '#EEEEEE']
     
-    # Gráfico 1 (Karamazov)
+    # Gráfico 1 (undefined)
     ax1.pie([libro1_actual, libro1_total - libro1_actual], 
             labels=['Leído', 'Faltante'], 
             autopct='%1.0f%%', 
             startangle=90, 
             colors=colors,
             explode=(0.05, 0))
-    ax1.set_title(f"Karamazov")
+    ax1.set_title(f"undefined")
 
-    # Gráfico 2 (Roma)
+    # Gráfico 2 (Maldita Roma)
     ax2.pie([libro2_actual, libro2_total - libro2_actual], 
             labels=['Leído', 'Faltante'], 
             autopct='%1.0f%%', 
             startangle=90, 
             colors=colors,
             explode=(0.05, 0))
-    ax2.set_title(f"Roma")
+    ax2.set_title(f"Maldita Roma")
     
     # Mostrar gráfico en la app
     st.pyplot(fig)
