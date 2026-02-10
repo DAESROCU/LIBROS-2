@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 # --- 1. CONFIGURACIÓN DE LA PÁGINA ---
 st.set_page_config(page_title="Tracker de Lectura", page_icon="📚")
 
-st.title("📚 Tracker: Undefined vs Roma")
+st.title("📚 Tracker: El Resplandor vs Roma")
 st.write("Control de avance y nivelación de lectura.")
 
 # --- 2. DATOS FIJOS DE LOS LIBROS ---
 
-libro1_nombre = "aun no lo decido"
-libro1_total = 1000
+libro1_nombre = "EL Resplandor"
+libro1_total = 499
 
 libro2_nombre = "Maldita Roma"
 libro2_total = 841
@@ -23,7 +23,7 @@ with col1:
     st.caption(f"Total: {libro1_total} páginas")
     # max_value impide que pongas un número mayor al total del libro
     libro1_actual = st.number_input(
-        "Pág. Actual (Undefined)", 
+        "Pág. Actual (El Resplandor)", 
         min_value=0, 
         max_value=libro1_total, 
         value=0,
@@ -53,7 +53,7 @@ if st.button("Calcular Progreso 🚀", type="primary"):
     
     # Mostrar porcentajes grandes
     m1, m2 = st.columns(2)
-    m1.metric(label="Avance Undefined", value=f"{porcentaje1:.2f}%")
+    m1.metric(label="Avance El Resplandor", value=f"{porcentaje1:.2f}%")
     m2.metric(label="Avance Maldita Roma", value=f"{porcentaje2:.2f}%")
 
     # --- 5. LÓGICA DE NIVELACIÓN (REGLA DE 3) ---
@@ -89,14 +89,14 @@ if st.button("Calcular Progreso 🚀", type="primary"):
     # Colores: Verde para leído, Gris claro para lo que falta
     colors = ['#4CAF50', '#EEEEEE']
     
-    # Gráfico 1 (undefined)
+    # Gráfico 1 (El Resplandor)
     ax1.pie([libro1_actual, libro1_total - libro1_actual], 
             labels=['Leído', 'Faltante'], 
             autopct='%1.0f%%', 
             startangle=90, 
             colors=colors,
             explode=(0.05, 0))
-    ax1.set_title(f"undefined")
+    ax1.set_title(f"El Resplandor")
 
     # Gráfico 2 (Maldita Roma)
     ax2.pie([libro2_actual, libro2_total - libro2_actual], 
